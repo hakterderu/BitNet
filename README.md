@@ -24,13 +24,16 @@ https://github.com/user-attachments/assets/7f46b736-edec-4828-b809-4be780a3e5b1
 ## Personal Notes
 
 > **Fork notes (for my own reference):** I'm using this primarily to experiment with the 2B model on my Linux x86 machine. The build instructions in the section below worked out of the box for me on Ubuntu 22.04 with GCC 12. Main area of interest: comparing throughput with different thread counts via `-t` flag.
+>
+> **Thread count findings (Ubuntu 22.04, Ryzen 7 5800X, 8 cores / 16 threads):**
+> - `-t 4`: ~9.2 tok/s
+> - `-t 8`: ~14.7 tok/s  ← sweet spot for me
+> - `-t 16`: ~13.1 tok/s (hyperthreading hurts slightly here)
+> Best results with `-t 8 -ngl 0` on the 2B model.
 
 ## What's New:
 - 01/15/2026 [BitNet CPU Inference Optimization](https://github.com/microsoft/BitNet/blob/main/src/README.md) ![NEW](https://img.shields.io/badge/NEW-red)
 - 05/20/2025 [BitNet Official GPU inference kernel](https://github.com/microsoft/BitNet/blob/main/gpu/README.md)
 - 04/14/2025 [BitNet Official 2B Parameter Model on Hugging Face](https://huggingface.co/microsoft/BitNet-b1.58-2B-4T)
 - 02/18/2025 [Bitnet.cpp: Efficient Edge Inference for Ternary LLMs](https://arxiv.org/abs/2502.11880)
-- 11/08/2024 [BitNet a4.8: 4-bit Activations for 1-bit LLMs](https://arxiv.org/abs/2411.04965)
-- 10/21/2024 [1-bit AI Infra: Part 1.1, Fast and Lossless BitNet b1.58 Inference on CPUs](https://arxiv.org/abs/2410.16144)
-- 10/17/2024 bitnet.cpp 1.0 released.
-- 03/21/2024 [The-Era-of-1-bit-LLMs__Training_Tips_Code_FAQ](https://github.com/micr
+- 11/08/
