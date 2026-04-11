@@ -13,3 +13,5 @@ Resources:
 > **Personal fork note:** This is a personal fork of [microsoft/BitNet](https://github.com/microsoft/BitNet) used for learning and experimentation. Contributions and issues should be directed to the upstream repository.
 
 > **Note to self:** If I find a genuine bug or improvement while experimenting, consider opening a PR or issue upstream rather than keeping it siloed here.
+
+> **Sync reminder:** Periodically run `git fetch upstream && git merge upstream/main` to stay up to date with upstream changes.
