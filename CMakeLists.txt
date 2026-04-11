@@ -15,7 +15,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 option(BITNET_ARM_TL1    "bitnet.cpp: use tl1 on arm platform"    OFF)
 option(BITNET_X86_TL2    "bitnet.cpp: use tl2 on x86 platform"    OFF)
 
-
+# Personal note: defaulting to C++17 for better standard library support
+# (upstream uses whatever llama.cpp sets, but I prefer being explicit here)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED true)
