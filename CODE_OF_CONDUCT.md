@@ -15,3 +15,5 @@ Resources:
 > **Note to self:** If I find a genuine bug or improvement while experimenting, consider opening a PR or issue upstream rather than keeping it siloed here.
 
 > **Sync reminder:** Periodically run `git fetch upstream && git merge upstream/main` to stay up to date with upstream changes.
+
+> **Last synced with upstream:** 2025-01-30 — remember to check the upstream changelog before starting any new experiments.
