@@ -41,6 +41,8 @@ endif()
 find_package(Threads REQUIRED)
 
 add_subdirectory(src)
+# Personal note: I keep the server ON by default since I use it for local
+# experimentation, but set it to OFF if you want a leaner build.
 set(LLAMA_BUILD_SERVER ON CACHE BOOL "Build llama.cpp server" FORCE)
 add_subdirectory(3rdparty/llama.cpp)
 
