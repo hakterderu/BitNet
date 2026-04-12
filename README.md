@@ -32,7 +32,13 @@ https://github.com/user-attachments/assets/7f46b736-edec-4828-b809-4be780a3e5b1
 > Best results with `-t 8 -ngl 0` on the 2B model.
 >
 > **Context length findings:** Tested `-c` values on the 2B model. Going above 2048 noticeably tanks throughput (~11.3 tok/s at `-c 4096`). Sticking with `-c 2048` as my default for interactive use.
+>
+> **Prompt length findings:** Short prompts (<50 tokens) show noticeably faster time-to-first-token than longer ones (200+ tokens). For interactive/chat use, keeping system prompts concise makes a real difference in perceived responsiveness. Prefill seems to be the bottleneck more than generation on this hardware.
+>
+> **My go-to launch command:**
+> ```
+> python run_inference.py -m models/bitnet-2b -p "Your prompt here" -t 8 -c 2048 -n 200
+> ```
 
 ## What's New:
-- 01/15/2026 [BitNet CPU Inference Optimization](https://github.com/microsoft/BitNet/blob/main/src/README.md) ![NEW](https://img.shields.io/badge/NEW-red)
-- 05/20/2025 [BitNet Official GPU inference kernel](https://github.com/microsof
+- 01/15/2026 [BitNet CPU Inferenc
