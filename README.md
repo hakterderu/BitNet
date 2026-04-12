@@ -30,10 +30,9 @@ https://github.com/user-attachments/assets/7f46b736-edec-4828-b809-4be780a3e5b1
 > - `-t 8`: ~14.7 tok/s  ← sweet spot for me
 > - `-t 16`: ~13.1 tok/s (hyperthreading hurts slightly here)
 > Best results with `-t 8 -ngl 0` on the 2B model.
+>
+> **Context length findings:** Tested `-c` values on the 2B model. Going above 2048 noticeably tanks throughput (~11.3 tok/s at `-c 4096`). Sticking with `-c 2048` as my default for interactive use.
 
 ## What's New:
 - 01/15/2026 [BitNet CPU Inference Optimization](https://github.com/microsoft/BitNet/blob/main/src/README.md) ![NEW](https://img.shields.io/badge/NEW-red)
-- 05/20/2025 [BitNet Official GPU inference kernel](https://github.com/microsoft/BitNet/blob/main/gpu/README.md)
-- 04/14/2025 [BitNet Official 2B Parameter Model on Hugging Face](https://huggingface.co/microsoft/BitNet-b1.58-2B-4T)
-- 02/18/2025 [Bitnet.cpp: Efficient Edge Inference for Ternary LLMs](https://arxiv.org/abs/2502.11880)
-- 11/08/
+- 05/20/2025 [BitNet Official GPU inference kernel](https://github.com/microsof
