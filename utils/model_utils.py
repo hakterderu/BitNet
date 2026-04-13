@@ -18,6 +18,7 @@ SUPPORTED_ARCHITECTURES = [
     "llama",
     "mistral",
     "falcon",
+    "phi",  # added phi support - useful for smaller experiments
 ]
 
 # Default quantization configurations
@@ -101,30 +102,13 @@ def get_model_size_gb(model_dir: Union[str, Path]) -> float:
         model_dir: Path to the directory containing model files.
 
     Returns:
-        Total size of .bin and .safetensors files in GB.
+        Total size of .bin and .safetensors files in gigabytes.
     """
     model_dir = Path(model_dir)
-    total_bytes = 0
-
-    for pattern in ("*.bin", "*.safetensors", "*.gguf"):
-        for f in model_dir.glob(pattern):
-            total_bytes += f.stat().st_size
-
-    size_gb = total_bytes / (1024 ** 3)
-    logger.debug("Model size in %s: %.2f GB", model_dir, size_gb)
-    return size_gb
-
-
-def ensure_output_dir(output_dir: Union[str, Path]) -> Path:
-    """Ensure the output directory exists, creating it if necessary.
-
-    Args:
-        output_dir: Path to the desired output directory.
-
-    Returns:
-        Resolved Path object for the output directory.
-    """
-    output_dir = Path(output_dir).resolve()
-    output_dir.mkdir(parents=True, exist_ok=True)
-    logger.debug("Output directory ensured: %s", output_dir)
-    return output_dir
+    # Include .safetensors in addition to .bin - most modern models use this format
+    total_bytes = sum(
+        f.stat().st_size
+        for f in model_dir.iterdir()
+        if f.suffix in (".bin", ".safetensors")
+    )
+    return total_bytes / (1024 ** 3)
